@@ -11,17 +11,17 @@ services:
         networks:
             - default
     db:
-        image: mysql
+        image: mariadb
         ports: 
             - "3306:3306"
+        volumes:
+            - ./dump:/docker-entrypoint-initdb.d
+            - ./mysql_data:/var/lib/mysql
         environment:
             MYSQL_DATABASE: $MYSQL_DB
             MYSQL_USER: $MYSQL_USER
             MYSQL_PASSWORD: $MYSQL_PASS
             MYSQL_ROOT_PASSWORD: $MYSQL_PASS_ROOT
-        volumes:
-            - ./dump:/docker-entrypoint-initdb.d
-            - ./mysql_data:/var/lib/mysql
         networks:
             - default
     phpmyadmin:
