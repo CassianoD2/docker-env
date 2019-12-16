@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 services:
     www:
         build: .
@@ -11,7 +11,7 @@ services:
         networks:
             - default
     db:
-        image: mariadb
+        image: mysql:5.7.28
         ports: 
             - "3306:3306"
         volumes:
